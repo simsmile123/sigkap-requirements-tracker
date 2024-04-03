@@ -24,21 +24,21 @@ document.addEventListener('DOMContentLoaded', function () {
         const label = document.createElement('label');
         label.textContent = text;
 
-        requirementItem.appendChild(checkbox);
-        requirementItem.appendChild(label);
-
-        requirementsList.appendChild(requirementItem);
-
-        checkbox.addEventListener('change', function () {
-            if (checkbox.checked) {
-                const password = prompt('Enter the password to remove this requirement:');
-                if (password === 'ABC') {
-                    requirementsList.removeChild(requirementItem);
-                } else {
-                    checkbox.checked = false;
-                    alert('Incorrect password. Requirement not removed.');
-                }
+        const removeButton = document.createElement('button');
+        removeButton.textContent = 'Remove';
+        removeButton.addEventListener('click', function () {
+            const password = prompt('Enter the password to remove this requirement:');
+            if (password === 'ABC') {
+                requirementsList.removeChild(requirementItem);
+            } else {
+                alert('Incorrect password. Requirement not removed.');
             }
         });
+
+        requirementItem.appendChild(checkbox);
+        requirementItem.appendChild(label);
+        requirementItem.appendChild(removeButton);
+
+        requirementsList.appendChild(requirementItem);
     }
 });
