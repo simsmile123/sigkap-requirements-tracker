@@ -28,5 +28,17 @@ document.addEventListener('DOMContentLoaded', function () {
         requirementItem.appendChild(label);
 
         requirementsList.appendChild(requirementItem);
+
+        checkbox.addEventListener('change', function () {
+            if (checkbox.checked) {
+                const password = prompt('Enter the password to remove this requirement:');
+                if (password === 'ABC') {
+                    requirementsList.removeChild(requirementItem);
+                } else {
+                    checkbox.checked = false;
+                    alert('Incorrect password. Requirement not removed.');
+                }
+            }
+        });
     }
 });
